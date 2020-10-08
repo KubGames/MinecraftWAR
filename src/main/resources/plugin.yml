@@ -1,0 +1,21 @@
+name: MinecraftWar
+version: ${project.version}
+main: me.gianzin.kub.minecraftwar.MinecraftWar
+api-version: 1.16
+authors: [ Gianzin, KubGames ]
+description: Um plugin de estratégia e PVP, inspirado no jogo WAR da GROW GAMES
+commands:
+  start:
+    permission: war.start
+  attack:
+    permission: war.attack
+  setarena:
+    permission: war.setarena
+  countrylist:
+    permission: war.countrylist
+  exercitos:
+    permission: war.exercitos
+  round:
+    permission: war.round
+  gui:
+    permission: war.gui
