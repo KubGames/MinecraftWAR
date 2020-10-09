@@ -99,4 +99,6 @@ public class VariáveisGlobais {
             System.out.println(MinecraftWar.chat + "Criado touch para " + VariáveisGlobais.paises[i]);
         }
     }
+
+    public static String mapearPaís = null;
 }

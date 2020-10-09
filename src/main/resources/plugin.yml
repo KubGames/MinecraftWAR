@@ -21,3 +21,5 @@ commands:
     permission: war.gui
   menuatacar:
     permission: war.menuatacar
+  setmapa:
+    permission: war.setmapa

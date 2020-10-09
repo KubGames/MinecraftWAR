@@ -1,5 +1,6 @@
 package me.gianzin.kub.minecraftwar;
 
+import me.gianzin.kub.minecraftwar.Files.DataManager;
 import me.gianzin.kub.minecraftwar.commands.*;
 import me.gianzin.kub.minecraftwar.eventos.PlayerDeath;
 import me.gianzin.kub.minecraftwar.menu.Gui;
@@ -15,8 +16,13 @@ public final class MinecraftWar extends JavaPlugin {
 
     public static String chat = ("" + ChatColor.GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "WAR" + ChatColor.RESET + ChatColor.GRAY + "] " + ChatColor.AQUA + ChatColor.BOLD);
 
+    public static DataManager data;
+
     @Override
     public void onEnable() {
+
+        this.data = new DataManager(this);
+
         // Plugin startup logic
 
 
@@ -36,6 +42,7 @@ public final class MinecraftWar extends JavaPlugin {
         this.getCommand("round").setExecutor(new Round());
         this.getCommand("gui").setExecutor(new Gui());
         this.getCommand("menuatacar").setExecutor(new MenuAtacar());
+        this.getCommand("setmapa").setExecutor(new setmapa());
 
         VariáveisGlobais.AdicionarVizinhos();
 
