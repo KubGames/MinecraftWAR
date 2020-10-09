@@ -143,11 +143,11 @@ public class Attack implements CommandExecutor {
         }
 
         if(VariáveisGlobais.spawnDefensor == null || VariáveisGlobais.spawnInvasor == null){
-            sender.sendMessage(MinecraftWar.chat + "Você ainda não definiu a arena de PVP, utilize" + ChatColor.RED + ChatColor.ITALIC + "/setarena");
+            VariáveisGlobais.paisesPlayers.get(args[0]).sendMessage(MinecraftWar.chat + "Você ainda não definiu a arena de PVP, utilize" + ChatColor.RED + ChatColor.ITALIC + "/setarena");
         }
 
         if(!VariáveisGlobais.paisesList.contains(args[0]) || !VariáveisGlobais.paisesList.contains(args[1])){
-            sender.sendMessage(MinecraftWar.chat + "Algum dos países que você digitou não existe");
+            VariáveisGlobais.paisesPlayers.get(args[0]).sendMessage(MinecraftWar.chat + "Algum dos países que você digitou não existe");
         }
 
         Player invasor =VariáveisGlobais.paisesPlayers.get(args[0]);
@@ -157,7 +157,7 @@ public class Attack implements CommandExecutor {
             Bukkit.broadcastMessage(MinecraftWar.chat + "Você não pode atacar a si mesmo");
         }
 
-        else if(VariáveisGlobais.paisesPlayers.get(args[0]) == sender && VariáveisGlobais.paisesExercitos.get(args[0]) > 1) {
+        else if((VariáveisGlobais.paisesPlayers.get(args[0]) == sender) && VariáveisGlobais.paisesExercitos.get(args[0]) > 1) {
 
 
             invasor.setGameMode(GameMode.ADVENTURE);

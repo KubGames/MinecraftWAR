@@ -51,10 +51,13 @@ public class Exercitos implements CommandExecutor {
         }
     }
 
+    
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         HologramaReload();
+
+
 
         if(args.length==0){
             sender.sendMessage(MinecraftWar.chat + "Utilize o comando: " + ChatColor.GOLD + "/exercitos <país> <add/remove> <quantidade>");
@@ -63,6 +66,8 @@ public class Exercitos implements CommandExecutor {
             }
             return true;
         }
+        Player p = VariáveisGlobais.paisesPlayers.get(args[0]);
+
 
         if(args[1].equals("add")){
 
@@ -74,19 +79,19 @@ public class Exercitos implements CommandExecutor {
 
                 if(sender == VariáveisGlobais.playerDaVez) {
 
-                    if (VariáveisGlobais.playerFortificar.get(sender) < Integer.parseInt(args[2])) {
-                        sender.sendMessage(MinecraftWar.chat + "Você não tem exércitos suficientes");
+                    if (VariáveisGlobais.playerFortificar.get(p) < Integer.parseInt(args[2])) {
+                        p.sendMessage(MinecraftWar.chat + "Você não tem exércitos suficientes");
                     } else {
                         VariáveisGlobais.paisesExercitos.put(args[0], VariáveisGlobais.paisesExercitos.get(args[0]) + Integer.parseInt(args[2]));
 
                         Bukkit.broadcastMessage(MinecraftWar.chat + "Foram adicionados " + args[2] + " exércitos ao país " + args[0]);
                         Bukkit.broadcastMessage(MinecraftWar.chat + "Agora o país " + args[0] + " possui " + VariáveisGlobais.paisesExercitos.get(args[0]));
 
-                        VariáveisGlobais.playerFortificar.replace((Player) sender, VariáveisGlobais.playerFortificar.get(sender) - Integer.parseInt(args[2]));
+                        VariáveisGlobais.playerFortificar.replace(p, VariáveisGlobais.playerFortificar.get(p) - Integer.parseInt(args[2]));
                     }
                 }
                 else{
-                    sender.sendMessage(MinecraftWar.chat + "Não é sua vez, aguarde");
+                    p.sendMessage(MinecraftWar.chat + "Não é sua vez, aguarde");
                 }
 
                 HologramaReload();
@@ -117,7 +122,7 @@ public class Exercitos implements CommandExecutor {
 
                     if (Integer.parseInt(args[2]) >= VariáveisGlobais.paisesExercitos.get(args[0])) {
 
-                        sender.sendMessage(MinecraftWar.chat + "Deve sobrar no mínimo 1 exército em cada território");
+                        p.sendMessage(MinecraftWar.chat + "Deve sobrar no mínimo 1 exército em cada território");
                         return true;
 
                     }
@@ -128,7 +133,7 @@ public class Exercitos implements CommandExecutor {
                     Bukkit.broadcastMessage(MinecraftWar.chat + "Agora o país " + args[0] + " possui " + VariáveisGlobais.paisesExercitos.get(args[0]));
 
                     VariáveisGlobais.playerFortificar.replace(VariáveisGlobais.paisesPlayers.get(args[0]), VariáveisGlobais.playerFortificar.get(VariáveisGlobais.paisesPlayers.get(args[0])) + Integer.parseInt(args[2]));
-                    VariáveisGlobais.paisesPlayers.get(args[0]).sendMessage(MinecraftWar.chat + "Você recebeu " + args[2] + " exércitos provenientes do território " + args[0] + " para fortificarqualquer outro território");
+                    VariáveisGlobais.paisesPlayers.get(args[0]).sendMessage(MinecraftWar.chat + "Você recebeu " + args[2] + " exércitos provenientes do território " + args[0] + " para fortificar qualquer outro território");
 
                 }
                 else {
@@ -144,7 +149,7 @@ public class Exercitos implements CommandExecutor {
 
             if(Integer.parseInt(args[2])>VariáveisGlobais.paisesExercitos.get(args[0])){
 
-                sender.sendMessage(MinecraftWar.chat + "Deve sobrar no mínimo 1 exército em cada território");
+                p.sendMessage(MinecraftWar.chat + "Deve sobrar no mínimo 1 exército em cada território");
                 return true;
 
             }

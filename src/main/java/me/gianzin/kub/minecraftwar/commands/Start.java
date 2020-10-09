@@ -171,6 +171,7 @@ public class Start implements CommandExecutor {
 
         VariáveisGlobais.round = 0;
 
+        VariáveisGlobais.Touchscreen();
 
         return true;
     }

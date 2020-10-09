@@ -3,6 +3,8 @@ package me.gianzin.kub.minecraftwar;
 import me.gianzin.kub.minecraftwar.commands.*;
 import me.gianzin.kub.minecraftwar.eventos.PlayerDeath;
 import me.gianzin.kub.minecraftwar.menu.Gui;
+import me.gianzin.kub.minecraftwar.menu.MenuAtacar;
+import me.gianzin.kub.minecraftwar.menu.Selecionar;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +27,7 @@ public final class MinecraftWar extends JavaPlugin {
         }
 
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new Selecionar(), this);
         this.getCommand("start").setExecutor(new Start());
         this.getCommand("attack").setExecutor(new Attack());
         this.getCommand("setarena").setExecutor(new setArena());
@@ -32,6 +35,10 @@ public final class MinecraftWar extends JavaPlugin {
         this.getCommand("exercitos").setExecutor(new Exercitos());
         this.getCommand("round").setExecutor(new Round());
         this.getCommand("gui").setExecutor(new Gui());
+        this.getCommand("menuatacar").setExecutor(new MenuAtacar());
+
+        VariáveisGlobais.AdicionarVizinhos();
+
 
     }
 

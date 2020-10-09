@@ -19,3 +19,5 @@ commands:
     permission: war.round
   gui:
     permission: war.gui
+  menuatacar:
+    permission: war.menuatacar
